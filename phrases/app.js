@@ -8,17 +8,15 @@ var phrases = [
   "Don't answer a question with a question."
 ];
 
-var random0to4 = Math.random() * 4;
-var randomInt = Math.round(random0to4);
-var randomPhrase = phrases[randomInt];
-
-console.log(randomPhrase);
-
 
 // Use document ready event
 // because our <script> tags are at the top
 $(document).on("ready", function () {
-  $(".js-phrase-heading").text(randomPhrase);
+ refreshRandomPhrase();
+
+  $(".js-refresh-button").on("click", function () {
+    refreshRandomPhrase();
+  });
 });
 
 
@@ -26,3 +24,17 @@ $(document).on("ready", function () {
 // $(document).ready(function () {
 //   $(".js-phrase-heading").text(randomPhrase);
 // });
+
+
+// ----------------------------------------------------
+//     DEFINITIONS
+
+function refreshRandomPhrase () {
+  var random0to4 = Math.random() * 4;
+  var randomInt = Math.round(random0to4);
+  var randomPhrase = phrases[randomInt];
+
+  console.log(randomPhrase);
+
+  $(".js-phrase-heading").text(randomPhrase);
+}
