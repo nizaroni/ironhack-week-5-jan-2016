@@ -1,22 +1,31 @@
 // app.js
 
-$.ajax({
-  url: "https://ironhack-characters.herokuapp.com/characters",
-
-  success: function (response) {
-    console.log("Everything went okay.");
-
-    displayCharacters(response);
-  },
-
-  error: function () {
-    console.log("We screwed up!");
-  }
+$(document).on("ready", function () {
+  $(".js-show-characters").on("click", function () {
+    fetchCharacters();
+  })
 });
 
 
 // ----------------------------------------
 // =========   DEFINITIONS  =================
+
+function fetchCharacters () {
+  $.ajax({
+    url: "https://ironhack-characters.herokuapp.com/characters",
+
+    success: function (response) {
+      console.log("Everything went okay.");
+
+      displayCharacters(response);
+    },
+
+    error: function () {
+      console.log("We screwed up!");
+    }
+  });
+}
+
 
 function displayCharacters (characters) {
 
